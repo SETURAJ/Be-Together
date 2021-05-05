@@ -1,0 +1,49 @@
+body {
+    /* background-image: url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSQqW66JWOJBzTKY4F1VyEbG4pcxAkBVOzlu_BX2r-I7EsYUn2nU1SOdriQ7-0BLgU8nYU&usqp=CAU) !important; */
+    /* background-repeat: no-repeat; */
+    /* background: #ff2616 !important; */
+    background: #d6d6d6 !important;
+}
+
+.nav {
+    border-radius: 0px !important;
+    padding: 10px 0 10px 0 !important;
+    background-color: #14229e !important; 
+}
+
+.mb-7 {
+    margin-bottom: 7px !important;
+}
+
+.mt-5 {
+    margin-top: 5px !important;
+}
+
+.mymodal {
+    height: 300px !important;
+    top: 200px !important;
+    font-size: 20px !important;
+}
+
+.mb-5 {
+    margin-bottom: 5px !important;
+}
+
+.w-big {
+    width: 200px !important;
+}
+
+.bwhite-lg {
+    background-color: transparent !important;
+}
+
+.bwhite-sm {
+    background-color: transparent !important;
+    width: 10px !important;
+}
+
+.comment-box {
+    display: none;
+}
+
+

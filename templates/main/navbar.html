@@ -1,0 +1,66 @@
+{% url 'home-view' as path_to_home %}
+{% url 'posts:main-post-view' as path_to_posts %}
+{% url 'profiles:my-profile-view' as path_to_my_profile %}
+{% url 'profiles:my-invites-view' as path_to_my_invites %}
+{% url 'profiles:invite-profiles-view' as path_to_invites %}
+{% url 'profiles:all-profiles-view' as path_to_all_profiles %}
+
+
+<div class="ui inverted menu nav mb-7">
+  <div class="ui container">
+    <a href="{{path_to_home}}" class="{% if request.path == path_to_home %}active{% endif %} item" title="Home" style="border-radius: 50px; background-color: transparent; border: none;">
+        <!-- <h3 style="color: rgb(255, 255, 255); font-family: sans-serif; font-size: 24px;">BeTogether</h3> &nbsp;&nbsp;&nbsp; -->
+        {% load static %}
+        <img src="{% static 'Final.png' %}" alt="Logo" style="width: 70px; height: 70px;">
+    </a>
+    {% if request.user.is_authenticated %}
+    <a href="{{path_to_posts}}" class="{% if request.path == path_to_posts %}active{% endif %} item" style="border-radius: 50px; background-color: transparent; border: none;" title="Feed">
+        <h3 style="color: rgb(255, 255, 255); font-family: sans-serif; font-size: 24px;">Post</h3>
+    </a>
+    {% endif %}
+
+    <div class="right menu">
+        {% if request.user.is_authenticated %}
+        <div class="item">
+            <div class="ui floating dropdown icon button teal"> Friends
+                <i class="dropdown icon"></i>
+                <div class="menu">
+                    <a href="{{path_to_all_profiles}}" class="{% if request.path == path_to_all_profiles %}active{% endif %} item">
+                        All Profiles
+                    </a>
+                    <a href="{{path_to_invites}}" class="{% if request.path == path_to_invites %}active{% endif %} item">
+                        Send Invites
+                    </a>
+                    <a href="{{path_to_my_invites}}" class="{% if request.path == path_to_my_invites %}active{% endif %} item">
+                        Received Invites &nbsp; <div class="ui purple horizontal label">{{invites_num}}</div>
+                    </a>
+                </div>
+             </div>
+        </div>
+             <div class="item">
+              <form action="" method="GET">
+                <div class="ui action left icon input">
+                <input class="prompt" type="text" name='q' placeholder="name of a friend...">
+                <i class="search icon"></i>
+                <button type='submit' class="ui button">Search</button>
+                </div>
+            </form>
+            </div>
+        
+            <a href="{{path_to_my_profile}}" class="{% if request.path == path_to_my_profile %}active{% endif %} item">
+                <img src={{profile.avatar.url}} class="ui avatar image" style="font-size: 30px; width: 60px; height: 70px;">&nbsp;
+                <h2 style="color: white;"> {{ request.user }} </h2>
+            </a>
+
+            <a href="{% url 'account_logout' %}" class="ui item" title="Logout" style="color: white; font-size: 24px;">
+                <i class="fal fa-sign-out-alt" style="font-size: 30px; border: black; background: transparent;" ></i>
+            </a>
+        {% else %}
+            
+        <a href="{% url 'account_login' %}" class="ui item" style="color: white; font-size: 24px; " title="Login">
+            <i class="fal fa-sign-in-alt" style="font-size: 30px; " ></i>
+            </a>
+        {% endif %}
+    </div>
+  </div>
+</div>
